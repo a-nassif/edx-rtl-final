@@ -26,7 +26,7 @@ codekit-config.json
 :2e#
 
 ### Internationalization artifacts
-*.mo
+### *.mo
 conf/locale/en/LC_MESSAGES/*.po
 !messages.po
 ### Remove when we have real Esperanto translations. For now, ignore

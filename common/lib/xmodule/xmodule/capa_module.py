@@ -341,6 +341,7 @@ class CapaModule(CapaFields, XModule):
         Return some html with data about the module
         """
         progress = self.get_progress()
+
         return self.system.render_template('problem_ajax.html', {
             'element_id': self.location.html_id(),
             'id': self.id,

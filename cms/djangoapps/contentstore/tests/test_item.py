@@ -378,7 +378,7 @@ class TestComponentHandler(TestCase):
 
         self.descriptor = self.modulestore.return_value.get_item.return_value
 
-        self.usage_id = 'dummy_usage_id'
+        self.usage_id = u'dummy_usage_id'
 
         self.user = UserFactory()
 

@@ -140,7 +140,7 @@ def get_lms_link_for_item(location, preview=False, course_id=None):
         else:
             lms_base = settings.LMS_BASE
 
-        lms_link = "//{lms_base}/courses/{course_id}/jump_to/{location}".format(
+        lms_link = u"//{lms_base}/courses/{course_id}/jump_to/{location}".format(
             lms_base=lms_base,
             course_id=course_id,
             location=Location(location)

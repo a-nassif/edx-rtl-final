@@ -315,7 +315,7 @@ def dashboard(request):
         try:
             course_enrollment_pairs.append((course_from_id(enrollment.course_id), enrollment))
         except ItemNotFoundError:
-            log.error("User {0} enrolled in non-existent course {1}"
+            log.error(u"User {0} enrolled in non-existent course {1}"
                       .format(user.username, enrollment.course_id))
 
     course_optouts = Optout.objects.filter(user=user).values_list('course_id', flat=True)

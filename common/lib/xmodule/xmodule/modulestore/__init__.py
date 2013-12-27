@@ -30,9 +30,9 @@ URL_RE = re.compile("""
 
 # TODO (cpennington): We should decide whether we want to expand the
 # list of valid characters in a location
-INVALID_CHARS = re.compile(r"[^\w.-]", re.UNICODE)
+INVALID_CHARS = re.compile(r"[^\w.%-]", re.UNICODE)
 # Names are allowed to have colons.
-INVALID_CHARS_NAME = re.compile(r"[^\w.:-]", re.UNICODE)
+INVALID_CHARS_NAME = re.compile(r"[^\w.:%-]", re.UNICODE)
 
 # html ids can contain word chars and dashes
 INVALID_HTML_CHARS = re.compile(r"[^\w-]", re.UNICODE)
@@ -168,7 +168,8 @@ class Location(_LocationBase):
 
             list_ = list(list_)
             for val in list_[:4] + [list_[5]]:
-                check(val, INVALID_CHARS)
+                if val is not None:
+                    check(val, INVALID_CHARS)
             # names allow colons
             check(list_[4], INVALID_CHARS_NAME)
             pass

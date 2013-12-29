@@ -6,8 +6,9 @@ import random
 import string  # pylint: disable=W0402
 import re
 import bson
+import os
 
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext as _, get_language
 from django.contrib.auth.decorators import login_required
 from django_future.csrf import ensure_csrf_cookie
 from django.conf import settings
@@ -288,6 +289,14 @@ def create_new_course(request):
         name='overview'
     )
     overview_template = AboutDescriptor.get_template('overview.yaml')
+    # check overview.yaml file in the language the course was created in
+    language_in_use = get_language()
+    if language_in_use != 'en':
+        overview_template_file = 'overview_' + language_in_use + '.yaml'
+        overview_template = AboutDescriptor.get_template(overview_template_file)
+        if overview_template is None:
+            #if None is returned reset to the original overview file
+            overview_template = AboutDescriptor.get_template('overview.yaml')
     modulestore('direct').create_and_save_xmodule(
         dest_about_location,
         system=new_course.system,

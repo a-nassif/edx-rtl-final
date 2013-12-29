@@ -939,7 +939,7 @@ class CapaModule(CapaFields, XModule):
             self.set_state_from_lcp()
 
         except (StudentInputError, ResponseError, LoncapaProblemError) as inst:
-            log.warning("StudentInputError in capa_module:problem_check",
+            log.warning(u"StudentInputError in capa_module:problem_check",
                         exc_info=True)
 
             # Save the user's state before failing

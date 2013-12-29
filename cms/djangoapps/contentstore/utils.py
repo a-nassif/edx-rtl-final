@@ -176,7 +176,7 @@ def get_lms_link_for_about_page(location):
         about_base = None
 
     if about_base is not None:
-        lms_link = "//{about_base_url}/courses/{course_id}/about".format(
+        lms_link = u"//{about_base_url}/courses/{course_id}/about".format(
             about_base_url=about_base,
             course_id=Location(location).course_id
         )

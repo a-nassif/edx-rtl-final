@@ -537,9 +537,6 @@ class ResourceTemplates(object):
     def get_template_dir(cls):
         if getattr(cls, 'template_dir_name', None):
             dirname = os.path.join('templates', cls.template_dir_name)
-            language_in_use = get_language()
-            if language_in_use != 'en' and os.path.isdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), dirname, str(language_in_use))):
-                dirname = os.path.join(dirname, str(language_in_use))
             # Check language in use to load correct yaml files. English is a special case since its default
             language_in_use = get_language()
             if language_in_use != 'en' and os.path.isdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), dirname, str(language_in_use))):

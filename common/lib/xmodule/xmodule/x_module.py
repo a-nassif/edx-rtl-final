@@ -524,7 +524,7 @@ class ResourceTemplates(object):
                 dirname = os.path.join(dirname, str(language_in_use))
             for template_file in resource_listdir(__name__, dirname):
                 if not template_file.endswith('.yaml'):
-                    log.warning("Skipping unknown template file %s", template_file)
+                    log.warning(u"Skipping unknown template file %s", template_file)
                     continue
                 template_content = resource_string(__name__, os.path.join(dirname, template_file))
                 template = yaml.safe_load(template_content)
@@ -542,7 +542,7 @@ class ResourceTemplates(object):
             if language_in_use != 'en' and os.path.isdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), dirname, str(language_in_use))):
                 dirname = os.path.join(dirname, str(language_in_use))
             if not resource_isdir(__name__, dirname):
-                log.warning("No resource directory {dir} found when loading {cls_name} templates".format(
+                log.warning(u"No resource directory {dir} found when loading {cls_name} templates".format(
                     dir=dirname,
                     cls_name=cls.__name__,
                 ))
